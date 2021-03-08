@@ -14,7 +14,7 @@ Using latent space regression to analyze and leverage compositionality in GANs.\
 
 **Table of Contents:**<br>
 1. [Colab](#colab) - run it in your browser without installing anything locally<br>
-2. [Setup](#setup)<br> - download pretrained models and resources
+2. [Setup](#setup) - download pretrained models and resources
 3. [Pretrained Models](#pretrained) - quickstart with pretrained models<br>
 3. [Notebooks](#notebooks) - jupyter notebooks for interactive composition<br>
 4. [Training](#training) - pipeline for training encoders<br>
