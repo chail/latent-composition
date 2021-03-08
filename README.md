@@ -1,5 +1,5 @@
 # Latent Composition
-[Project Page](./) |  [Paper](./) 
+[Project Page](https://chail.github.io/latent-composition/) |  [Paper](./) 
 
 
 <img src='img/teaser.jpeg' width=600>  
