@@ -34,6 +34,7 @@ def rect_to_bb(rect):
     # return a tuple of (x, y, w, h)
     return (x, y, w, h)
 
+# adapted from https://github.com/tkarras/progressive_growing_of_gans/blob/master/dataset_tool.py#L498
 def celebahq_crop(im, landmarks=None):
     if landmarks is None:
         gray = cv2.cvtColor(im, cv2.COLOR_RGB2GRAY)

@@ -23,7 +23,9 @@ Using latent space regression to analyze and leverage compositionality in GANs.\
 
 ## Colab
 
-TODO
+1. [Interactive Masking Demo](https://colab.research.google.com/drive/1p-L2dPMaqMyr56TYoYmBJhoyIyBJ7lzH#scrollTo=4acfzEryWPHN): Demonstrates using a masked encoder to investigate image priors in GANs.
+2. [Interactive Composition Demo](https://colab.research.google.com/drive/1j7Bz9vdVnxzOgokawA39hCJZLTmVDq6_): Interface to compose multiple images using masked encoder.
+3. [Finetune and Edit](https://colab.research.google.com/drive/1zpD_UYqiGqjzftYxHQPy4sxOQTWV_QY9): For real images, finetune the encoder towards a specific image for better reconstruction. Further composition can be done in real time.
 
 <a name="setup"/>
 
@@ -69,13 +71,13 @@ with torch.no_grad():
 
 ## Notebooks
 
-First, setup symlinked required for notebooks: `bash notebooks/setup_notebooks.sh`. Add the conda environment to jupyter kernels: `python -m ipykernel install --user --name latent-composition`. 
+First, setup symlinks required for notebooks: `bash notebooks/setup_notebooks.sh`, and add the conda environment to jupyter kernels: `python -m ipykernel install --user --name latent-composition`. 
 
 We provide a few interactive examples:
-1. `quickstart.ipynb`: basic usage example
-2. `interactive-masking.ipynb`: investigate GAN priors from incomplete images
-3. `interactive-composition.ipynb`: compose multiple images
-4. `finetune-and-edit.ipynb`: finetune the model on a real image, and then compose in real-time
+1. `notebooks/quickstart.ipynb`: basic usage example
+2. `notebooks/interactive-masking.ipynb`: investigate GAN priors from incomplete images
+3. `notebooks/interactive-composition.ipynb`: compose multiple images
+4. `notebooks/finetune-and-edit.ipynb`: finetune the model on a real image, and then compose in real-time
 
 
 <a name="training"/>
@@ -86,9 +88,10 @@ Coming soon!
 
 
 ### TODOs
+- [ ] Release photos directory
 - [ ] Add experiment scripts
 - [ ] Add training code
-- [ ] Webpage of random samples
+- [ ] Website: Webpage of random samples, and update with acknowledgments.
 
 ### Acknowledgements
 

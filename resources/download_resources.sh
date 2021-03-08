@@ -21,8 +21,10 @@ mv 79999_iter.pth resources/face_parsing_pytorch/res/cp
 
 # face landmarks model
 mkdir -p resources/dlib
-wget https://github.com/davisking/dlib-models/blob/master/shape_predictor_68_face_landmarks.dat.bz2 
+wget wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
 mv shape_predictor_68_face_landmarks.dat.bz2 resources/dlib
+bunzip2 resources/dlib/shape_predictor_68_face_landmarks.dat.bz2
+
 
 # identity loss model from pixel2style2pixel
 gdown --id 1KW7bjndL3QG3sxBbZxreGHigcCCpsDgn # pretrained model
