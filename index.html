@@ -1,0 +1,265 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Patch Forensics</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script type="text/javascript" src="jquery.mlens-1.0.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <style>
+        body {
+            font-family: 'Open-Sans', sans-serif;
+            font-weight: 300;
+            background-color: #fff;
+        }
+
+        .content {
+            width: 1000px;
+            padding: 25px 50px;
+            margin: 25px auto;
+            background-color: white;
+            box-shadow: 0px 0px 10px #999;
+            border-radius: 15px;
+        }
+
+        .contentblock {
+            width: 950px;
+            margin: 0 auto;
+            padding: 0;
+            border-spacing: 25px 0;
+        }
+
+        .contentblock td {
+            background-color: #fff;
+            padding: 25px 50px;
+            vertical-align: top;
+            box-shadow: 0px 0px 10px #999;
+            border-radius: 15px;
+        }
+
+        a,
+        a:visited {
+            color: #224b8d;
+            font-weight: 300;
+        }
+
+        #authors {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #conference {
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        #authors a {
+            margin: 0 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 35px;
+            font-weight: 300;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: 300;
+        }
+
+        code {
+            display: block;
+            padding: 10px;
+            margin: 10px 10px;
+        }
+
+        p {
+            line-height: 25px;
+            text-align: justify;
+        }
+
+        p code {
+            display: inline;
+            padding: 0;
+            margin: 0;
+        }
+
+        #teasers {
+            margin: 0 auto;
+        }
+
+        #teasers td {
+            margin: 0 auto;
+            text-align: center;
+            padding: 5px;
+        }
+
+        #teasers img {
+            width: 250px;
+        }
+
+        #results img {
+            width: 133px;
+        }
+
+        #seeintodark {
+            margin: 0 auto;
+        }
+
+        #sift {
+            margin: 0 auto;
+        }
+
+        #sift img {
+            width: 250px;
+        }
+
+        .downloadpaper {
+            padding-left: 20px;
+            float: right;
+            text-align: center;
+        }
+
+        .downloadpaper a {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #demoframe {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 340px;
+        }
+
+        #feedbackform {
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            border-radius: 15px;
+        }
+
+        #eyeglass {
+            height: 530px;
+        }
+
+        #eyeglass #wrapper {
+            position: relative;
+            height: auto;
+            margin: 0 auto;
+            float: left;
+            width: 800px;
+        }
+
+        #mitnews {
+            font-weight: normal;
+            margin-top: 20px;
+            font-size: 14px;
+            width: 220px;
+        }
+
+        #mitnews a {
+            font-weight: normal;
+        }
+
+        .teaser-img {
+            width: 70%;
+						display: block;
+						margin-left: auto;
+						margin-right: auto;
+        }
+
+        .iframe {
+            width: 100%;
+            height: 125%
+        }
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+		<!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98008272-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-98008272-2');
+    </script>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+		-->
+
+</head>
+
+<body>
+
+    <div class="content">
+			<h1>Using latent space regression to analyze and leverage compositionality in GANs.</h1>
+
+        <p id="authors">
+            <a href="http://people.csail.mit.edu/lrchai/">Lucy Chai</a>
+						<a href="http://people.csail.mit.edu/jwulff/">Jonas Wulff</a>
+            <a href="http://web.mit.edu/phillipi/">Phillip Isola</a><br>
+            <!-- <strong>MIT Computer Science and Artificial Intelligence Laboratory</strong> -->
+            MIT Computer Science and Artificial Intelligence Laboratory
+        </p>
+				<font size="+2">
+					<p style="text-align: center;">
+						<a href="" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="https://github.com/chail/latent-composition" target="_blank">[Code]</a> 
+						<!--
+						<a href="TODO: youtube link?" target="_blank">[Video]</a>
+						-->
+					</p>
+					</font>
+        <p>
+            <img class='teaser-img' src='img/teaser.jpeg'></img>
+        </p>
+
+				<p><strong>Abstract: </strong>In recent years, Generative Adversarial Networks have become ubiquitous in both research and public perception, but how GANs convert an unstructured latent code to high quality output is still an open question.
+				In this work, we investigate regression into the latent space as a probe to understand the compositional properties of GANs. 
+				We find that combining the regressor and a pretrained generator provides a strong image prior, allowing us to create composite images from a collage of random image parts at inference time and leverage the generator to rectify inconsistencies.
+				To compare compositional properties across different generators, we measure the trade-offs between reconstruction of the unrealistic input and image quality of the regenerated samples.
+				We find that the regression approach enables more localized editing of individual image parts compared to direct editing in the latent space, and we conduct experiments to quantify this independence effect.
+				Our method is agnostic to how image parts are extracted, and does not require explicit labelled knowledge of concepts during training.
+				Because this approach only uses a single feed-forward pass, it can operate in real-time and also perform a number of related applications, such as image inpainting or example-based image editing, which we demonstrate on several GANs and datasets.
+				</p>
+
+        <br clear="all">
+    </div>
+    <div class="content" id="samples">
+
+        <h2>Random Samples</h2>
+
+				<p> I will add these soon! </p>
+
+    </div>      
+    <div class="content" id="references">
+
+        <h2>Reference</h2>
+
+				<p>L Chai, J Wulff, P Isola. Using latent space regression to analyze and leverage compositionality in GANs. <br>International Conference on Learning Representations, 2021.</p>
+
+        <code>
+			@inproceedings{chai2021latent,<br>
+				&nbsp;&nbsp;title={Using latent space regression to analyze and leverage compositionality in GANs.},<br>
+				&nbsp;&nbsp;author={Chai, Lucy and Wulff, Jonas and Isola, Phillip},<br>
+				&nbsp;&nbsp;booktitle={International Conference on Learning Representations},<br>
+				&nbsp;&nbsp;year={2021}<br>
+			 }
+				</code>
+    </div>      
+    <div class="content" id="acknowledgements">
+			<!---
+          <p><strong>Acknowledgements</strong>:
+			--->
+					 Recycling a familiar template <a href="https://chail.github.io/patch-forensics/">template</a>. Recycling is good for the environment ;)
+    </div>
+</body>
+
+</html>
