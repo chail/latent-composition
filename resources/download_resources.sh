@@ -21,7 +21,7 @@ mv 79999_iter.pth resources/face_parsing_pytorch/res/cp
 
 # face landmarks model
 mkdir -p resources/dlib
-wget wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
+wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
 mv shape_predictor_68_face_landmarks.dat.bz2 resources/dlib
 bunzip2 resources/dlib/shape_predictor_68_face_landmarks.dat.bz2
 
