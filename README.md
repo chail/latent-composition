@@ -52,6 +52,8 @@ bash resources/download_resources.sh
 
 ## Quickstart with pretrained models
 
+Pretrained models can be downloaded from [here](https://drive.google.com/file/d/1vSEH2XMIG1XzQl3JLZwUKm_kdomelUqm/view?usp=sharing). Using the above download script will automatically download the pretrained models, as well as other resources for automatic collaging.
+
 See the following code snippet for a basic example. An notebook format is provided in `notebooks/quickstart.ipynb`
 
 ```python
