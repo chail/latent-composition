@@ -58,6 +58,7 @@ See the following code snippet for a basic example. An notebook format is provid
 
 ```python
 from networks import networks
+from utils import masking
 
 nets = networks.define_nets('proggan', 'celebahq')
 # proggan: celebahq, livingroom, church
