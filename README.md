@@ -13,9 +13,9 @@ Using latent space regression to analyze and leverage compositionality in GANs.\
 - CPU or NVIDIA GPU + CUDA CuDNN
 
 **Table of Contents:**<br>
-1. [Setup](#setup)<br>
-3. [Colab](#colab) - run it in your browser without installing anything locally<br>
-2. [Pretrained Models](#pretrained) - quickstart with pretrained models<br>
+1. [Colab](#colab) - run it in your browser without installing anything locally<br>
+2. [Setup](#setup)<br> - download pretrained models and resources
+3. [Pretrained Models](#pretrained) - quickstart with pretrained models<br>
 3. [Notebooks](#notebooks) - jupyter notebooks for interactive composition<br>
 4. [Training](#training) - pipeline for training encoders<br>
 
@@ -47,6 +47,7 @@ bash resources/download_resources.sh
 ```
 
 <a name="pretrained"/>
+
 ## Quickstart with pretrained models
 
 See the following code snippet for a basic example. An notebook format is provided in `notebooks/quickstart.ipynb`
@@ -65,6 +66,7 @@ with torch.no_grad():
 ```
 
 <a name="notebooks"/>
+
 ## Notebooks
 
 First, setup symlinked required for notebooks: `bash notebooks/setup_notebooks.sh`. Add the conda environment to jupyter kernels: `python -m ipykernel install --user --name latent-composition`. 
@@ -77,6 +79,7 @@ We provide a few interactive examples:
 
 
 <a name="training"/>
+
 ## Training
 
 Coming soon!
