@@ -13,18 +13,14 @@ def main(args):
 
     # make all the directories
     os.makedirs(osp.join(args.outdir, 'composite_original'), exist_ok=True)
-    os.makedirs(osp.join(args.outdir, 'composite_filled'), exist_ok=True)
     os.makedirs(osp.join(args.outdir, 'composite_mask'), exist_ok=True)
-    os.makedirs(osp.join(args.outdir, 'inverted_RGB'), exist_ok=True)
-    os.makedirs(osp.join(args.outdir, 'inverted_RGB_filled'), exist_ok=True)
     os.makedirs(osp.join(args.outdir, 'inverted_RGBM'), exist_ok=True)
     os.makedirs(osp.join(args.outdir, 'poisson'), exist_ok=True)
 
     model_type = args.model
     domain = args.domain
     nets_RGBM = networks.define_nets(model_type, domain)
-    nets_RGB = networks.define_nets(model_type, domain, use_RGBM=False)
-    compositer=compositions.get_compositer(domain)(nets_RGBM, nets_RGB=nets_RGB)
+    compositer=compositions.get_compositer(domain)(nets_RGBM)
 
     if args.input_source == 'images':
         assert(args.domain in args.data_path) # sanity check!
@@ -58,18 +54,9 @@ def main(args):
             resize2image(composite_data.composite_image).save(os.path.join(
                 args.outdir, 'composite_original',
                 'sample%06d_composite_original.png' % i))
-            resize2image(composite_data.composite_filled).save(os.path.join(
-                args.outdir, 'composite_filled',
-                'sample%06d_composite_filled.png' % i))
             resize2image(composite_data.composite_mask, method=Image.NEAREST).save(
                 os.path.join(args.outdir, 'composite_mask',
                 'sample%06d_composite_mask.png' % i))
-            resize2image(composite_data.inverted_RGB).save(os.path.join(
-                args.outdir, 'inverted_RGB',
-                'sample%06d_inverted_RGB.png' % i))
-            resize2image(composite_data.inverted_RGB_filled).save(os.path.join(
-                args.outdir, 'inverted_RGB_filled',
-                'sample%06d_inverted_RGB_filled.png' % i))
             resize2image(composite_data.inverted_RGBM).save(os.path.join(
                 args.outdir, 'inverted_RGBM',
                 'sample%06d_inverted_RGBM.png' % i))
