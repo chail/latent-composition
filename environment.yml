@@ -1,0 +1,33 @@
+name: latent-composition
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python
+  - cudatoolkit
+  - pytorch
+  - cudnn
+  - torchvision
+  - torchaudio
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - jupyter
+  - pip
+  - tensorboard
+  - tqdm
+  - ipython
+  - pillow
+  - opencv
+  - sk-video
+  - dlib
+  - scikit-image
+  - pip:
+     - oyaml
+     - lpips
+     - prdc
+     - ninja
+     - ipywidgets
+     - gdown
+
