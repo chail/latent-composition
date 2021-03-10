@@ -4,7 +4,6 @@ __pycache__/
 *$py.class
 .ipynb_checkpoints/
 
-photos/
 pretrained_models
 archive/
 datasets/
