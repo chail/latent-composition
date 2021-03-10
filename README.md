@@ -91,7 +91,6 @@ Coming soon!
 
 
 ### TODOs
-- [ ] Release photos directory
 - [ ] Add experiment scripts
 - [ ] Add training code
 - [ ] Website: Webpage of random samples, and update with acknowledgments.
