@@ -23,9 +23,9 @@ Using latent space regression to analyze and leverage compositionality in GANs.\
 
 ## Colab
 
-1. [Interactive Masking Demo](https://colab.research.google.com/drive/1p-L2dPMaqMyr56TYoYmBJhoyIyBJ7lzH#scrollTo=4acfzEryWPHN): Demonstrates using a masked encoder to investigate image priors in GANs.
-2. [Interactive Composition Demo](https://colab.research.google.com/drive/1j7Bz9vdVnxzOgokawA39hCJZLTmVDq6_): Interface to compose multiple images using masked encoder.
-3. [Finetune and Edit](https://colab.research.google.com/drive/1zpD_UYqiGqjzftYxHQPy4sxOQTWV_QY9): For real images, finetune the encoder towards a specific image for better reconstruction. Further composition can be done in real time.
+1. [Interactive Masking Demo](https://colab.research.google.com/drive/1p-L2dPMaqMyr56TYoYmBJhoyIyBJ7lzH?usp=sharing): Demonstrates using a masked encoder to investigate image priors in GANs.
+2. [Interactive Composition Demo](https://colab.research.google.com/drive/1j7Bz9vdVnxzOgokawA39hCJZLTmVDq6_?usp=sharing): Interface to compose multiple images using masked encoder.
+3. [Finetune and Edit](https://colab.research.google.com/drive/1zpD_UYqiGqjzftYxHQPy4sxOQTWV_QY9?usp=sharing): For real images, finetune the encoder towards a specific image for better reconstruction. Further composition can be done in real time.
 
 <a name="setup"/>
 
