@@ -166,7 +166,12 @@
         }
 
         .teaser-img {
-            width: 70%;
+            width: 80%;
+						display: block;
+						margin-left: auto;
+						margin-right: auto;
+        }
+        .teaser-gif {
 						display: block;
 						margin-left: auto;
 						margin-right: auto;
@@ -176,6 +181,20 @@
             width: 100%;
             height: 125%
         }
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center
+      }
+      .image {
+        flex-basis: 40%
+      }
+      .text {
+        font-size: 20px;
+        padding-left: 20px;
+      }
+
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 		<!--
@@ -200,18 +219,19 @@
 
     <div class="content">
 			<h1>Using latent space regression to analyze and leverage compositionality in GANs</h1>
-
         <p id="authors">
             <a href="http://people.csail.mit.edu/lrchai/">Lucy Chai</a>
 						<a href="http://people.csail.mit.edu/jwulff/">Jonas Wulff</a>
             <a href="http://web.mit.edu/phillipi/">Phillip Isola</a><br>
             <!-- <strong>MIT Computer Science and Artificial Intelligence Laboratory</strong> -->
             MIT Computer Science and Artificial Intelligence Laboratory
+						<br><i>International Conference on Learning Representations 2021</i>
         </p>
 				<font size="+2">
 					<p style="text-align: center;">
 						<a href="" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="https://github.com/chail/latent-composition" target="_blank">[Code]</a> 
+						<a href="https://github.com/chail/latent-composition" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="https://colab.research.google.com/drive/1p-L2dPMaqMyr56TYoYmBJhoyIyBJ7lzH?usp=sharing" target="_blank">[Colab]</a>
 						<!--
 						<a href="TODO: youtube link?" target="_blank">[Video]</a>
 						-->
@@ -221,22 +241,39 @@
             <img class='teaser-img' src='img/teaser.jpeg'></img>
         </p>
 
-				<p><strong>Abstract: </strong>In recent years, Generative Adversarial Networks have become ubiquitous in both research and public perception, but how GANs convert an unstructured latent code to high quality output is still an open question.
-				In this work, we investigate regression into the latent space as a probe to understand the compositional properties of GANs. 
-				We find that combining the regressor and a pretrained generator provides a strong image prior, allowing us to create composite images from a collage of random image parts at inference time and leverage the generator to rectify inconsistencies.
-				To compare compositional properties across different generators, we measure the trade-offs between reconstruction of the unrealistic input and image quality of the regenerated samples.
-				We find that the regression approach enables more localized editing of individual image parts compared to direct editing in the latent space, and we conduct experiments to quantify this independence effect.
-				Our method is agnostic to how image parts are extracted, and does not require explicit labelled knowledge of concepts during training.
-				Because this approach only uses a single feed-forward pass, it can operate in real-time and also perform a number of related applications, such as image inpainting or example-based image editing, which we demonstrate on several GANs and datasets.
+				<p><strong>Abstract: </strong>
+				In recent years, Generative Adversarial Networks have become ubiquitous in both research and public perception, but how GANs convert an unstructured latent code to a high quality output is still an open question. In this work, we investigate regression into the latent space as a probe to understand the compositional properties of GANs. We find that combining the regressor and a pretrained generator provides a strong image prior, allowing us to create composite images from a collage of random image parts at inference time while maintaining global consistency. To compare compositional properties across different generators, we measure the trade-offs between reconstruction of the unrealistic input and image quality of the regenerated samples. We find that the regression approach enables more localized editing of individual image parts compared to direct editing in the latent space, and we conduct experiments to quantify this independence effect. Our method is agnostic to the semantics of edits, and does not require labels or predefined concepts during training. Beyond image composition, our method extends to a number of related applications, such as image inpainting or example-based image editing, which we demonstrate on several GANs and datasets, and because it uses only a single forward pass, it can operate in real-time. 
 				</p>
 
         <br clear="all">
     </div>
     <div class="content" id="samples">
 
-        <h2>Random Samples</h2>
+        <h2 style="text-align:center;">Summary</h2>
 
-				<p> I will add these soon! </p>
+				<div class="container">
+					<div class="image">
+						<img src='img/teaser.gif'></img>
+					</div>
+					<div class="text">
+						<p> We use a latent regressor network that learns from missing data for image composition and image completion.  The combination of the regressor network and a pretrained GAN forms an image prior to create realistic images despite unrealistic input. This animation briefly demonstrates some applications of our method.</p>
+					</div>
+				</div>
+        <br>
+        <hr>
+        <p style="text-align: center;">Using the latent regression and pretrained GAN, we can create automatic collages and merge them into coherent composite images.</p>
+        <img class='teaser-img' src='img/website_composition.jpeg'></img>
+
+        <br>
+        <hr>
+        <p style="text-align: center;">We demonstrate an application of editing and merging real images. <br>To better fit a specific image, we do a few seconds of initial optimization, and the remaining editing occurs in real-time.</p>
+        <img class='teaser-img' style="width:70%;" src='img/finetune_edit.jpeg'></img>
+        <br>
+        <hr>
+        <p style="text-align: center;">We use the latent regressor to investigate the independently changeable parts that the GAN learns from data. For example, we visualize what regions of a given image change, when the outlined red portion is modified. The resulting variations show regions of the images that commonly vary together, which can be interpreted as a form of unsupervised part discovery.</p>
+        <img class='teaser-img' src='img/website_independence.jpeg'></img>
+
+				<p style="text-align: center;"> More content (e.g. poster and more random samples) coming soon! </p>
 
     </div>      
     <div class="content" id="references">
@@ -255,10 +292,9 @@
 				</code>
     </div>      
     <div class="content" id="acknowledgements">
-			<!---
           <p><strong>Acknowledgements</strong>:
-			--->
-					 Recycling a familiar <a href="https://chail.github.io/patch-forensics/">template</a>. Recycling is good for the environment ;)
+					We would like to thank David Bau, Richard Zhang, Tongzhou Wang, Luke Anderson, and Yen-Chen Lin for helpful discussions and feedback. Thanks to Antonio Torralba, Alyosha Efros, Richard Zhang, Jun-Yan Zhu, Wei-Chiu Ma, Minyoung Huh, and Yen-Chen Lin for permission to use their photographs. LC is supported by the National Science Foundation Graduate Research Fellowship under Grant No. 1745302. JW is supported by a grant from Intel Corp.
+					 Recycling a familiar <a href="https://chail.github.io/patch-forensics/">template</a> ;).
     </div>
 </body>
 
