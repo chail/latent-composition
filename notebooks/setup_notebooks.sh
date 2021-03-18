@@ -8,7 +8,7 @@ ln -s ../training ./
 ln -s ../networks ./
 ln -s ../datasets ./
 ln -s ../results ./
-ln -s ../photos ./
+ln -s ../img ./
 ln -s ../pretrained_models ./
 
 # Set up git config filters so huge output of notebooks is not committed.

@@ -53,12 +53,10 @@ def load_proggan_encoder(domain, nz=512, outdim=256, use_RGBM=True, use_VAE=Fals
                                   modify_sequence=customnet.modify_layers,
                                   channels_in=channels_in)
     if ckpt_path is None:
-        if use_RGBM:
-            suffix = 'RGBM'
-        elif use_VAE:
-            suffix = 'VAE'
-        else:
-            suffix = 'RGB'
+        # use the pretrained checkpoint path (RGBM model)
+        assert(use_RGBM)
+        assert(not use_VAE)
+        suffix = 'RGBM'
         ckpt_path = f'pretrained_models/pgan_encoders/{domain}_{suffix}/model_final.pth'
         print(f"Using default checkpoint path: {ckpt_path}")
     ckpt = torch.load(ckpt_path)

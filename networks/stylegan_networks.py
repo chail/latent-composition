@@ -37,12 +37,10 @@ def load_stylegan_encoder(domain, nz=512*14, outdim=256, use_RGBM=True, use_VAE=
     encoder = get_stylegan_encoder(ndim_z=nz, resnet_depth=resnet_depth,
                                    halfsize=halfsize, channels_in=channels_in)
     if ckpt_path is None:
-        if use_RGBM:
-            suffix = 'RGBM'
-        elif use_VAE:
-            suffix = 'VAE'
-        else:
-            suffix = 'RGBM'
+        # use the pretrained checkpoint path (RGBM model)
+        assert(use_RGBM)
+        assert(not use_VAE)
+        suffix = 'RGBM'
         ckpt_path = f'pretrained_models/sgan_encoders/{domain}_{suffix}/model_final.pth'
         print(f"Using default checkpoint path: {ckpt_path}")
     ckpt = torch.load(ckpt_path)

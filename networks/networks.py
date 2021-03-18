@@ -139,7 +139,7 @@ class StyleganNets(Nets):
         # stylegan mask is [0, 1]
         if torch.min(mask) == -0.5 :
             mask += 0.5
-        assert(torch.min(mask >= 0)) # style
+        assert(torch.min(mask >= 0))
 
         if self.use_RGBM or self.use_VAE:
             net_input = torch.cat([image, mask], dim=1)
