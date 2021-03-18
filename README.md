@@ -2,8 +2,8 @@
 [Project Page](https://chail.github.io/latent-composition/) |  [Paper](./) 
 
 Using latent space regression to analyze and leverage compositionality in GANs.\
-[Lucy Chai](http://people.csail.mit.edu/lrchai/), [Jonas Wulff](http://people.csail.mit.edu/jwulff/), [Phillip Isola](http://web.mit.edu/phillipi/)\
-*International Conference on Learning Representations, 2021*
+*International Conference on Learning Representations, 2021*\
+[Lucy Chai](http://people.csail.mit.edu/lrchai/), [Jonas Wulff](http://people.csail.mit.edu/jwulff/), [Phillip Isola](http://web.mit.edu/phillipi/)
 
 <img src='img/teaser.gif' width=300>  
 
