@@ -1,12 +1,11 @@
 # Latent Composition
 [Project Page](https://chail.github.io/latent-composition/) |  [Paper](./) 
 
-
-<img src='img/teaser.gif' width=300>  
+<img src='img/teaser.gif' width=300> 
 
 Using latent space regression to analyze and leverage compositionality in GANs.\
+*International Conference on Learning Representations, 2021*\
 [Lucy Chai](http://people.csail.mit.edu/lrchai/), [Jonas Wulff](http://people.csail.mit.edu/jwulff/), [Phillip Isola](http://web.mit.edu/phillipi/)
-*International Conference on Learning Representations, 2021*
 
 ## Prerequisites
 - Linux
@@ -75,7 +74,7 @@ with torch.no_grad():
 
 ## Notebooks
 
-First, setup symlinks required for notebooks: `bash notebooks/setup_notebooks.sh`, and add the conda environment to jupyter kernels: `python -m ipykernel install --user --name latent-composition`. 
+*Important*: First, setup symlinks required for notebooks: `bash notebooks/setup_notebooks.sh`, and add the conda environment to jupyter kernels: `python -m ipykernel install --user --name latent-composition`. 
 
 We provide a few interactive examples:
 1. `notebooks/quickstart.ipynb`: basic usage example
