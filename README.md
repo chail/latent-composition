@@ -10,7 +10,7 @@ Using latent space regression to analyze and leverage compositionality in GANs.\
 ## Prerequisites
 - Linux
 - Python 3
-- CPU or NVIDIA GPU + CUDA CuDNN
+- NVIDIA GPU + CUDA CuDNN
 
 **Table of Contents:**<br>
 1. [Colab](#colab) - run it in your browser without installing anything locally<br>
