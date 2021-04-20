@@ -1,4 +1,5 @@
 import torch
+import urllib
 
 def set_requires_grad(requires_grad, *models):
     for model in models:
@@ -9,6 +10,10 @@ def set_requires_grad(requires_grad, *models):
             model.requires_grad = requires_grad
         else:
             assert False, 'unknown type %r' % type(model)
+
+def is_url(url):
+    scheme = urllib.parse.urlparse(url).scheme
+    return scheme in ('http', 'https')
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""

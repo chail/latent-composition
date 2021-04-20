@@ -1,5 +1,5 @@
 import torch, torchvision, os
-from utils import proggan, customnet
+from utils import proggan, customnet, util
 
 def proggan_setting(domain):
     # default: 256 resolution, 512 z dimension, resnet 18 encoder
@@ -15,11 +15,13 @@ def proggan_setting(domain):
 def load_proggan(domain):
     # Automatically download and cache progressive GAN model
     # (From Karras, converted from Tensorflow to Pytorch.)
-
-    if os.path.isfile('pretrained_models/pgans/%s/generator.pth' % domain):
+    if domain in ['celebahq-small', 'livingroom-paper']:
         # these are pgans we trained ourselves
-        sd = torch.load('pretrained_models/pgans/%s/generator.pth' % domain)
+        weights_filename = 'pretrained_models/pgans_%s_generator.pth' % domain
+        url = 'http://latent-composition.csail.mit.edu/' + weights_filename
+        sd = torch.hub.load_state_dict_from_url(url)
     else:
+        # models from gan dissect
         weights_filename = dict(
             bedroom='proggan_bedroom-d8a89ff1.pth',
             church='proggan_churchoutdoor-7e701dd5.pth',
@@ -57,9 +59,12 @@ def load_proggan_encoder(domain, nz=512, outdim=256, use_RGBM=True, use_VAE=Fals
         assert(use_RGBM)
         assert(not use_VAE)
         suffix = 'RGBM'
-        ckpt_path = f'pretrained_models/pgan_encoders/{domain}_{suffix}/model_final.pth'
+        ckpt_path = f'pretrained_models/pgan_encoders_{domain}_{suffix}_model_final.pth'
         print(f"Using default checkpoint path: {ckpt_path}")
-    ckpt = torch.load(ckpt_path)
+        url = 'http://latent-composition.csail.mit.edu/' + ckpt_path
+        ckpt = torch.hub.load_state_dict_from_url(url)
+    else:
+        ckpt = torch.load(ckpt_path)
     netE.load_state_dict(ckpt['state_dict'])
     netE = netE.eval()
     return netE

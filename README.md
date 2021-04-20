@@ -43,7 +43,7 @@ conda env create -f environment.yml
 ```
 
 - Download resources:
-	- we provide a script for downloading associated resources and pretrained models. Fetch these by running:
+	- we provide a script for downloading associated resources. Fetch these by running:
 ```bash
 bash resources/download_resources.sh
 ```
@@ -52,7 +52,7 @@ bash resources/download_resources.sh
 
 ## Quickstart with pretrained models
 
-Pretrained models can be downloaded from [here](https://drive.google.com/file/d/1vSEH2XMIG1XzQl3JLZwUKm_kdomelUqm/view?usp=sharing) or [here](http://people.csail.mit.edu/lrchai/projects/latent-composition/pretrained_models.zip). Using the above download script will automatically download the pretrained models, as well as other resources for automatic collaging.
+Pretrained models will be automatically downloaded via PyTorch Hub. The above resources should also be downloaded via the download script for automatic collaging.
 
 See the following code snippet for a basic example. An notebook format is provided in `notebooks/quickstart.ipynb`
 
@@ -94,7 +94,6 @@ Coming soon!
 - [ ] Add experiment scripts
 - [ ] Add training code
 - [ ] Website: Webpage of random samples 
-- [ ] Move pretrained models hosting from gdrive to CSAIL, package models individually for faster download
 
 ### Acknowledgements
 

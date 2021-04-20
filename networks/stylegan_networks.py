@@ -21,9 +21,10 @@ def stylegan_setting(domain):
                 resnet_depth=resnet_depth)
 
 def load_stylegan(domain, size=256):
-    ckpt_path = f'pretrained_models/sgans/stylegan2-{domain}-config-f.pt'
+    ckpt_path = f'pretrained_models/sgans_stylegan2-{domain}-config-f.pt'
+    url = 'http://latent-composition.csail.mit.edu/' + ckpt_path
     cfg=Namespace(optimize_to_w=True)
-    generator = get_generator(ckpt_path, cfg=cfg, size=size).eval()
+    generator = get_generator(url, cfg=cfg, size=size).eval()
     return generator
 
 def load_stylegan_encoder(domain, nz=512*14, outdim=256, use_RGBM=True, use_VAE=False,
@@ -41,9 +42,13 @@ def load_stylegan_encoder(domain, nz=512*14, outdim=256, use_RGBM=True, use_VAE=
         assert(use_RGBM)
         assert(not use_VAE)
         suffix = 'RGBM'
-        ckpt_path = f'pretrained_models/sgan_encoders/{domain}_{suffix}/model_final.pth'
+        ckpt_path = f'pretrained_models/sgan_encoders_{domain}_{suffix}_model_final.pth'
         print(f"Using default checkpoint path: {ckpt_path}")
-    ckpt = torch.load(ckpt_path)
+        url = 'http://latent-composition.csail.mit.edu/' + ckpt_path
+        import pdb; pdb.set_trace()
+        ckpt = torch.hub.load_state_dict_from_url(url)
+    else:
+        ckpt = torch.load(ckpt_path)
     encoder.load_state_dict(ckpt['state_dict'])
     encoder = encoder.eval()
     return encoder

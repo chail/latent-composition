@@ -8,6 +8,7 @@ import os
 import torch
 from torch import nn
 from .PT_STYLEGAN2.model import Generator
+from . import util
 
 # We need this little hack to allow calling it as Generator(x)
 class encapsulated_generator(nn.Module):
@@ -34,7 +35,10 @@ def get_generator(filename, cfg=None, size=128, channel_multiplier=2):
         input_is_w = True
 
     model = Generator(size, latent, n_mlp, channel_multiplier=channel_multiplier)
-    model.load_state_dict(torch.load(filename)['g_ema'])
+    if util.is_url(filename):
+        model.load_state_dict(torch.hub.load_state_dict_from_url(filename)['g_ema'])
+    else:
+        model.load_state_dict(torch.load(filename)['g_ema'])
 
     G = encapsulated_generator(model, input_is_w=input_is_w)
 

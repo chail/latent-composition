@@ -1,7 +1,8 @@
 ### pretrained networks ###
+# EDIT: pretrained networks now downloaded through torch.hub
 # wget https://people.csail.mit.edu/lrchai/projects/latent_composition/pretrained_models.zip
-gdown --id 1vSEH2XMIG1XzQl3JLZwUKm_kdomelUqm
-unzip pretrained_models.zip
+# gdown --id 1vSEH2XMIG1XzQl3JLZwUKm_kdomelUqm
+# unzip pretrained_models.zip
 
 ### external pretrained models ### 
 
