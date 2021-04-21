@@ -45,7 +45,6 @@ def load_stylegan_encoder(domain, nz=512*14, outdim=256, use_RGBM=True, use_VAE=
         ckpt_path = f'pretrained_models/sgan_encoders_{domain}_{suffix}_model_final.pth'
         print(f"Using default checkpoint path: {ckpt_path}")
         url = 'http://latent-composition.csail.mit.edu/' + ckpt_path
-        import pdb; pdb.set_trace()
         ckpt = torch.hub.load_state_dict_from_url(url)
     else:
         ckpt = torch.load(ckpt_path)
