@@ -1,5 +1,5 @@
 import torch, os
-from utils import customnet
+from utils import customnet, util
 from argparse import Namespace
 from utils.pt_stylegan2 import get_generator
 from collections import OrderedDict
@@ -47,7 +47,10 @@ def load_stylegan_encoder(domain, nz=512*14, outdim=256, use_RGBM=True, use_VAE=
         url = 'http://latent-composition.csail.mit.edu/' + ckpt_path
         ckpt = torch.hub.load_state_dict_from_url(url)
     else:
-        ckpt = torch.load(ckpt_path)
+        if util.is_url(ckpt_path):
+            ckpt = torch.hub.load_state_dict_from_url(ckpt_path)
+        else:
+            ckpt = torch.load(ckpt_path)
     encoder.load_state_dict(ckpt['state_dict'])
     encoder = encoder.eval()
     return encoder
