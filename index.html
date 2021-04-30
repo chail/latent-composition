@@ -200,6 +200,21 @@
         font-size: 20px;
         padding-left: 20px;
       }
+			.center {
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.boxshadow {
+				border: 1px solid;
+				padding: 10px;
+				box-shadow: 2px 2px 5px #888888;
+			}
+			.spacertr{
+				height: 8px;
+			}
+			.spacertd{
+				width: 40px;
+			}
 
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -236,6 +251,7 @@
 				<font size="+2">
 					<p style="text-align: center;">
 						<a href="http://arxiv.org/abs/2103.10426" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="http://arxiv.org/abs/2103.10426" target="_blank">[Poster]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="https://github.com/chail/latent-composition" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="https://colab.research.google.com/drive/1p-L2dPMaqMyr56TYoYmBJhoyIyBJ7lzH?usp=sharing" target="_blank">[Colab]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="bibtex.txt" target="_blank">[Bibtex]</a>
@@ -243,7 +259,7 @@
 						<a href="TODO: youtube link?" target="_blank">[Video]</a>
 						-->
 					</p>
-					</font>
+				</font>
         <p>
             <img class='teaser-img' src='img/teaser.jpeg'></img>
         </p>
@@ -254,7 +270,7 @@
 
         <br clear="all">
     </div>
-    <div class="content" id="samples">
+    <div class="content" id="summary">
 
         <h2 style="text-align:center;">Summary</h2>
 
@@ -279,9 +295,89 @@
         <hr>
         <p style="text-align: center;">We use the latent regressor to investigate the independently changeable parts that the GAN learns from data. For example, we visualize what regions of a given image change, when the outlined red portion is modified. The resulting variations show regions of the images that commonly vary together, which can be interpreted as a form of unsupervised part discovery.</p>
         <img class='summary-img' src='img/website_independence.jpeg'></img>
-
-				<p style="text-align: center;"> More content (e.g. poster and more random samples) coming soon! </p>
-
+			</div>
+			<div class="content" id="samples">
+        <h2 style="text-align:center;">Additional Samples</h2>
+				<p style="text-align: center;">Click on the panels below to view uncurated composite images generated from randomly sampled image parts.</p>
+				<table style="text-align: center;" class="center">
+					<tr>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_church/">
+								<p style="text-align: center;">ProGAN Church</p>
+								<img src="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_church/images/sample000002_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_livingroom/">
+								<p style="text-align: center;">ProGAN Living Room</p>
+								<img src="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_livingroom/images/sample000000_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_celebahq/">
+								<p style="text-align: center;">ProGAN CelebAHQ</p>
+								<img src="http://latent-composition.csail.mit.edu/web_samples/samples/proggan_celebahq/images/sample000008_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+					</tr>
+					<tr class="spacertr"></tr>
+					<tr>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_church/">
+								<p style="text-align: center;">StyleGAN Church</p>
+								<img src="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_church/images/sample000000_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_car/">
+								<p style="text-align: center;">StyleGAN Car</p>
+								<img src="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_car/images/sample000006_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_ffhq/">
+								<p style="text-align: center;">StyleGAN FFHQ</p>
+								<img src="http://latent-composition.csail.mit.edu/web_samples/samples/stylegan_ffhq/images/sample000011_inverted_RGBM.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<br>
+        <hr>
+				<p style="text-align: center;">Click on the panels below to view comparisons of different image reconstruction methods operating on the same randomly sampled real image parts. Composition is a balance between unifying the input parts to create a realistic output, but still remain close to the input parts; the methods exhibit a tradeoff of these two factors. A third axis is inference time. In the below webpages, methods that require additional per-image optimization are marked with (*), whereas the other methods operate using a single forward pass. </p>
+				<table style="text-align: center;" class="center">
+					<tr>
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/comparisons/celebahq_face/images/">
+								<p style="text-align: center;">CelebAHQ Faces</p>
+								<img src="http://latent-composition.csail.mit.edu/web_samples/comparisons/celebahq_face/images/000_inputs.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+						<td class="spacertd">
+						<td>
+							<div class="boxshadow">
+							<a href="http://latent-composition.csail.mit.edu/web_samples/comparisons/lsun_church/images/">
+								<p style="text-align: center;">LSUN Church</p>
+								<img src="http://latent-composition.csail.mit.edu/web_samples/comparisons/lsun_church/images/001_input.png" style="width:150px">
+							</a>
+							</div>
+						</td>
+					</tr>
+				</table>
     </div>      
     <div class="content" id="references">
 
