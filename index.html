@@ -251,8 +251,8 @@
 				<font size="+2">
 					<p style="text-align: center;">
 						<a href="http://arxiv.org/abs/2103.10426" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="http://arxiv.org/abs/2103.10426" target="_blank">[Poster]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="https://github.com/chail/latent-composition" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="http://latent-composition.csail.mit.edu/presentations/latent_composition_poster.pdf" target="_blank">[Poster]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="https://colab.research.google.com/drive/1p-L2dPMaqMyr56TYoYmBJhoyIyBJ7lzH?usp=sharing" target="_blank">[Colab]</a> &nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="bibtex.txt" target="_blank">[Bibtex]</a>
 						<!--
@@ -260,11 +260,19 @@
 						-->
 					</p>
 				</font>
+				<font size="+1">
+					<p style="text-align: center;">
+						Skip to:  &nbsp;&nbsp;
+						<a href="#abstract">[Abstract]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#summary">[Summary]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="#samples">[Random Samples]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+					</p>
+				</font>
         <p>
             <img class='teaser-img' src='img/teaser.jpeg'></img>
         </p>
 
-				<p><strong>Abstract: </strong>
+				<p id="abstract"><strong>Abstract: </strong>
 				In recent years, Generative Adversarial Networks have become ubiquitous in both research and public perception, but how GANs convert an unstructured latent code to a high quality output is still an open question. In this work, we investigate regression into the latent space as a probe to understand the compositional properties of GANs. We find that combining the regressor and a pretrained generator provides a strong image prior, allowing us to create composite images from a collage of random image parts at inference time while maintaining global consistency. To compare compositional properties across different generators, we measure the trade-offs between reconstruction of the unrealistic input and image quality of the regenerated samples. We find that the regression approach enables more localized editing of individual image parts compared to direct editing in the latent space, and we conduct experiments to quantify this independence effect. Our method is agnostic to the semantics of edits, and does not require labels or predefined concepts during training. Beyond image composition, our method extends to a number of related applications, such as image inpainting or example-based image editing, which we demonstrate on several GANs and datasets, and because it uses only a single forward pass, it can operate in real-time. 
 				</p>
 
