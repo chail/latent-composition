@@ -93,7 +93,6 @@ Coming soon!
 ### TODOs
 - [ ] Add experiment scripts
 - [ ] Add training code
-- [ ] Website: Webpage of random samples 
 
 ### Acknowledgements
 
