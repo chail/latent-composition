@@ -1,5 +1,5 @@
 # Latent Composition
-[Project Page](https://chail.github.io/latent-composition/) |  [Paper](http://arxiv.org/abs/2103.10426) 
+[Project Page](https://chail.github.io/latent-composition/) |  [Paper](http://arxiv.org/abs/2103.10426) | [Bibtex](https://chail.github.io/latent-composition/bibtex.txt)
 
 <img src='img/teaser.gif' width=300> 
 
@@ -101,6 +101,8 @@ We thank the authors of these repositories:
 - [StyleGAN 2 Pytorch](https://github.com/rosinality/stylegan2-pytorch) for pytorch implementation of StyleGAN 2 and pretrained models
 - [Pixel2Style2Pixel](https://github.com/eladrich/pixel2style2pixel) for identity loss implementation
 - [Pytorch FID](https://github.com/mseitzer/pytorch-fid) for FID implementation
+
+<a name="citation"/>
 
 ### Citation
 If you use this code for your research, please cite our paper:
