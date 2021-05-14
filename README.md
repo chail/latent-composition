@@ -87,12 +87,20 @@ We provide a few interactive examples:
 
 ## Training
 
-Coming soon!
+Examples for training stylegan and proggan encoders are contained in:
+```bash
+training/train_pgan_encoder.sh
+training/train_sgan_encoder.sh
+```
+
+Training progress can be visualized using:
+```bash
+tensorboard --logdir training/runs/
+```
 
 
 ### TODOs
 - [ ] Add experiment scripts
-- [ ] Add training code
 
 ### Acknowledgements
 
