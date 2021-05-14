@@ -6,6 +6,8 @@ class LPIPS_Loss(nn.Module):
     def __init__(self, model='net-lin', net='vgg', use_gpu=True, spatial=False):
         super(LPIPS_Loss, self).__init__()
         self.model = lpips.LPIPS(net=net, spatial=spatial).eval()
+        if use_gpu:
+            self.model = self.model.cuda()
 
     def forward(self, pred, ref):
         dist = self.model.forward(pred, ref)

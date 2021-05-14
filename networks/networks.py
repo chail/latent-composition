@@ -3,8 +3,8 @@ from utils import zdataset
 import numpy as np
 import torch
 
-def define_nets(nettype, domain, use_RGBM=True, use_VAE=False, ckpt_path=None,
-                load_encoder=True, device='cuda'):
+def define_nets(nettype, domain, use_RGBM=True, use_VAE=False,
+                ckpt_path='pretrained', load_encoder=True, device='cuda'):
     if nettype == 'proggan':
         return ProgganNets(domain, use_RGBM, use_VAE, ckpt_path, load_encoder, device)
     elif nettype == 'stylegan':
@@ -39,8 +39,8 @@ class Nets(ABC):
         pass
 
 class ProgganNets(Nets):
-    def __init__(self, domain, use_RGBM=True, use_VAE=False, ckpt_path=None,
-                 load_encoder=True, device='cuda'):
+    def __init__(self, domain, use_RGBM=True, use_VAE=False,
+                 ckpt_path='pretrained', load_encoder=True, device='cuda'):
         from . import proggan_networks
         setting = proggan_networks.proggan_setting(domain)
         self.generator = proggan_networks.load_proggan(domain).to(device)
@@ -55,9 +55,14 @@ class ProgganNets(Nets):
         self.use_RGBM = use_RGBM
         self.use_VAE = use_VAE
 
-    def sample_zs(self, n=100, seed=1):
-        return zdataset.z_sample_for_model(self.generator, n,
-                                           seed).to(self.device)
+    def sample_zs(self, n=100, seed=1, device=None):
+        result = zdataset.z_sample_for_model(self.generator, n,
+                                             seed).to(self.device)
+        if device is None:
+            result = result.to(self.device)
+        else:
+            result = result.to(device)
+        return result
 
     def zs2image(self, zs):
         return self.generator(zs)
@@ -81,9 +86,9 @@ class ProgganNets(Nets):
 
         if self.use_VAE:
             nz = encoded.shape[1]
-            sample = torch.randn_like(encoded[:, nz//2:, :, :])
-            encoded_mean  = encoded[:, nz//2:, :, :]
-            encoded_sigma = torch.exp(encoded[:, :nz//2, :, :])
+            sample = torch.randn_like(encoded[:, nz:, :, :])
+            encoded_mean  = encoded[:, nz:, :, :]
+            encoded_sigma = torch.exp(encoded[:, :nz, :, :])
             encoded = encoded_mean + encoded_sigma * sample
 
         return encoded
@@ -97,7 +102,7 @@ class ProgganNets(Nets):
 
 
 class StyleganNets(Nets):
-    def __init__(self, domain, use_RGBM=True, use_VAE=False, ckpt_path=None, load_encoder=True, device='cuda'):
+    def __init__(self, domain, use_RGBM=True, use_VAE=False, ckpt_path='pretrained', load_encoder=True, device='cuda'):
         from . import stylegan_networks
         setting = stylegan_networks.stylegan_setting(domain)
         self.generator = stylegan_networks.load_stylegan(

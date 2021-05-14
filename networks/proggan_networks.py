@@ -43,18 +43,21 @@ def load_proggan(domain):
 
 
 def load_proggan_encoder(domain, nz=512, outdim=256, use_RGBM=True, use_VAE=False,
-                         resnet_depth=18, ckpt_path=None):
+                         resnet_depth=18, ckpt_path='pretrained'):
     assert not(use_RGBM and use_VAE),'specify one of use_RGBM, use_VAE'
     if use_VAE:
         nz = nz*2
     channels_in = 4 if use_RGBM or use_VAE else 3
     print(f"Using halfsize?: {outdim<150}")
     print(f"Input channels: {channels_in}")
-    netE = customnet.CustomResNet(size=18, num_classes=nz,
+    netE = customnet.CustomResNet(size=resnet_depth, num_classes=nz,
                                   halfsize=outdim<150,
                                   modify_sequence=customnet.modify_layers,
                                   channels_in=channels_in)
-    if ckpt_path is None:
+    if ckpt_path is None: # does not load weights
+        return netE
+
+    if ckpt_path == 'pretrained':
         # use the pretrained checkpoint path (RGBM model)
         assert(use_RGBM)
         assert(not use_VAE)

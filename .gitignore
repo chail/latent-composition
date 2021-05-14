@@ -9,7 +9,6 @@ archive/
 datasets/
 training/checkpoints/
 training/runs/
-training/runs_finished/
 resources/*
 !resources/download_resources.sh
 notebooks/*
@@ -17,10 +16,6 @@ notebooks/*
 !notebooks/*.py
 !notebooks/*.sh
 results/
-training/ft_stylegan/optimized_ws/
-training/ft_stylegan/optimized_ws/
-training/ft_stylegan/checkpoints/
-training/ft_stylegan/runs/
 
 *.npz
 *.mp4
