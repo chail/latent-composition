@@ -113,7 +113,7 @@ def get_activations(files, model, batch_size=50, dims=2048, device='cpu'):
     # modified: Transform
     img_path = str(files[0])
     if ('church_outdoor' in img_path or 'living_room' in img_path):
-        print("Warning: using church  or living room lsun cropping for dataset images")
+        print("Warning: adding square crop to church or living room lsun cropping for dataset images")
         transform=TF.Compose([
             TF.Resize(256, Image.ANTIALIAS),
             TF.CenterCrop(256),

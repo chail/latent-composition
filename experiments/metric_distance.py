@@ -44,7 +44,7 @@ def compute_distances(args):
     lpips_vgg = losses.Masked_LPIPS_Loss(net='vgg')
     loss_metrics = dict(l1=[], lpips_alex=[], lpips_vgg=[])
     for (gt, mask, rec) in zip(pbar(gt_loader), mask_loader, rec_loader):
-        # check the paths
+        # sanity check the paths for consistency
         for p1, p2, p3 in zip(gt[1][0], mask[1][0], rec[1][0]):
             sample = p1.split('/')[-1].split('_')[0]
             assert(p2.split('/')[-1].split('_')[0] == sample)
@@ -108,6 +108,4 @@ if __name__ == "__main__":
     np.savez(os.path.join(outdir, 'distances.npz'), **metrics)
 
     pidfile.mark_job_done(outdir)
-
-
 

@@ -87,7 +87,7 @@ We provide a few interactive examples:
 
 ## Training
 
-Examples for training stylegan and proggan encoders are contained in:
+Example commands for training stylegan and proggan encoders are contained in:
 ```bash
 training/train_pgan_encoder.sh
 training/train_sgan_encoder.sh
@@ -98,9 +98,16 @@ Training progress can be visualized using:
 tensorboard --logdir training/runs/
 ```
 
+## Experiments
 
-### TODOs
-- [ ] Add experiment scripts
+Example commands for scripted experiment utilities are located in the `experiments/` directory. Below is a short description of each script.
+
+1. `experiments/sample.sh`: sample and save images from the specified generator
+2. `experiments/reencode.sh`: sample, encode, and regenerate images from the specified generator
+3. `experiments/run_compositions.sh`: automate collage inputs using a pretrained segmenter, and invert using the encoder
+4. `experiments/metric_fid.sh`: computing FID metrics
+5. `experiments/metric_prdc.sh`: precision, recall, density, coverage metrics
+6. `experiments/metric_distance.sh`: reconstruction distances on composite images
 
 ### Acknowledgements
 
