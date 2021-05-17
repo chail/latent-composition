@@ -87,7 +87,20 @@ We provide a few interactive examples:
 
 ## Training
 
-Example commands for training stylegan and proggan encoders are contained in:
+The following commands are examples of training a masked encoder on the church domain:
+```bash
+# proggan encoder
+python -m training.train_pgan_encoder \
+        --netE_type resnet-18 --niter 5000 --lr 0.0001 --batchSize 16 \
+        --netG church --masked --outf <output_directory>
+	
+# stylegan encoder
+python -m training.train_sgan_encoder \
+        --netE_type resnet-34 --niter 6800  --lr 0.0001 --batchSize 16 \
+        --netG church --masked --outf <output_directory>
+```
+
+Example commands for additional GAN domains are contained in:
 ```bash
 training/train_pgan_encoder.sh
 training/train_sgan_encoder.sh
