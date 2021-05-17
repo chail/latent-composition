@@ -249,7 +249,7 @@ def train(opt):
         netE.train()
 
         # do checkpointing
-        if epoch % 1000 == 0 or epoch == opt.niter:
+        if epoch % 500 == 0 or epoch == opt.niter:
             training_utils.make_checkpoint(
                 netE, optimizerE, epoch,
                 test_metrics['loss_total'].avg.item(),
