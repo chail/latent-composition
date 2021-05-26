@@ -43,6 +43,7 @@ def train(opt):
     # get the encoder
     depth = int(opt.netE_type.split('-')[-1])
     has_masked_input = opt.masked or opt.vae_like
+    assert(not (opt.masked and opt.vae_like)), "specify 1 of masked or vae_like"
     netE = stylegan_networks.load_stylegan_encoder(domain=None, nz=nz,
                                                    outdim=outdim,
                                                    use_RGBM=opt.masked,
@@ -112,12 +113,15 @@ def train(opt):
                 hints_fake, mask_fake = masking.mask_upsample(fake_im)
                 mask_fake = mask_fake + 0.5 # trained in range [0, 1]
                 encoded = netE(torch.cat([hints_fake, mask_fake], dim=1))
+                # encoded.shape = [batch, layers, nets.setting['nz']]
                 if opt.masked:
                     regenerated = netG(encoded)
                 elif opt.vae_like:
-                    sample = torch.randn_like(encoded[:, nz:, :, :])
-                    encoded_mean  = encoded[:, nz:, :, :]
-                    encoded_sigma = torch.exp(encoded[:, :nz, :, :])
+                    # determine number of stylegan layers
+                    nlayers = nets.setting['nlatent'] // nets.setting['nz']
+                    sample = torch.randn_like(encoded[:, nlayers:, :])
+                    encoded_mean  = encoded[:, nlayers:, :]
+                    encoded_sigma = torch.exp(encoded[:, :nlayers, :])
                     reparam = encoded_mean + encoded_sigma * sample
                     regenerated = netG(reparam)
                     encoded = encoded_mean # just use mean in z loss
@@ -193,9 +197,10 @@ def train(opt):
                     if opt.masked:
                         regenerated = netG(encoded)
                     elif opt.vae_like:
-                        sample = torch.randn_like(encoded[:, nz:, :, :])
-                        encoded_mean  = encoded[:, nz:, :, :]
-                        encoded_sigma = torch.exp(encoded[:, :nz, :, :])
+                        nlayers = nets.setting['nlatent'] // nets.setting['nz']
+                        sample = torch.randn_like(encoded[:, nlayers:, :])
+                        encoded_mean  = encoded[:, nlayers:, :]
+                        encoded_sigma = torch.exp(encoded[:, :nlayers, :])
                         reparam = encoded_mean + encoded_sigma * sample
                         regenerated = netG(reparam)
                         encoded = encoded_mean # just use mean in z loss

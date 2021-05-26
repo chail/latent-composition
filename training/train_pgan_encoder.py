@@ -40,6 +40,7 @@ def train(opt):
     # create the encoder architecture
     depth = int(opt.netE_type.split('-')[-1])
     has_masked_input = opt.masked or opt.vae_like
+    assert(not (opt.masked and opt.vae_like)), "specify 1 of masked or vae_like"
     netE = proggan_networks.load_proggan_encoder(domain=None, nz=nz,
                                                  outdim=out_shape,
                                                  use_RGBM=opt.masked,

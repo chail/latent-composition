@@ -5,6 +5,7 @@ import torch
 
 def define_nets(nettype, domain, use_RGBM=True, use_VAE=False,
                 ckpt_path='pretrained', load_encoder=True, device='cuda'):
+    assert(not (use_RGBM and use_VAE)) # check that at most 1 is true
     if nettype == 'proggan':
         return ProgganNets(domain, use_RGBM, use_VAE, ckpt_path, load_encoder, device)
     elif nettype == 'stylegan':
@@ -85,12 +86,11 @@ class ProgganNets(Nets):
         encoded = self.encoder(net_input)
 
         if self.use_VAE:
-            nz = encoded.shape[1]
+            nz = encoded.shape[1] //2 # vae predicts mean and sigma
             sample = torch.randn_like(encoded[:, nz:, :, :])
             encoded_mean  = encoded[:, nz:, :, :]
             encoded_sigma = torch.exp(encoded[:, :nz, :, :])
             encoded = encoded_mean + encoded_sigma * sample
-
         return encoded
 
     def decode(self, latent):
@@ -152,12 +152,14 @@ class StyleganNets(Nets):
             net_input = image
 
         encoded = self.encoder(net_input)
+        # encoder shape = [batch_size, layers, nets.setting['nz']]
 
         if self.use_VAE:
-            nz = encoded.shape[1]
-            sample = torch.randn_like(encoded[:, nz//2:, :, :])
-            encoded_mean  = encoded[:, nz//2:, :, :]
-            encoded_sigma = torch.exp(encoded[:, :nz//2, :, :])
+            nlayers = self.setting['nlatent'] // self.setting['nz']
+            assert(encoded.shape[1] == 2*nlayers)
+            sample = torch.randn_like(encoded[:, nlayers:, :])
+            encoded_mean  = encoded[:, nlayers:, :]
+            encoded_sigma = torch.exp(encoded[:, :nlayers, :])
             encoded = encoded_mean + encoded_sigma * sample
 
         return encoded
